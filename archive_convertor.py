@@ -20,14 +20,22 @@ def converter(diretorio, format_ori, format_final):
     os.chdir(diretorio)
     tmparqvs = os.listdir(diretorio)
     arqvs = []
+    print(tmparqvs)
     arqvs = separaArqvs(tmparqvs, arqvs, format_ori)
-    os.mkdir("Convertidos")
-    os.mkdir("Originais")
+    if not os.path.exists('Convertidos'):
+        os.mkdir("Convertidos")
+    if not os.path.exists('Originais'):
+        os.mkdir("Originais")
     for i in arqvs:
+        arqv_ori = i.replace("'", '\\\'').replace(" ", "\ ")
         arqv_final = arqv_ori.replace(format_ori, format_final)
-        os.system(f"ffmpeg -i '{arqv_ori}' '{arqv_final}'")
-        os.system(f"mv '{arqv_final}' Convertidos")
-        os.system(f"mv '{arqv_ori}' Originais")
+        print(arqv_final)
+        print(arqv_ori)
+        a = f"ffmpeg -i {arqv_ori} {arqv_final}"
+        print(a)
+        os.system(f"ffmpeg -i {arqv_ori} {arqv_final}")
+        os.system(f"mv {arqv_final} Convertidos")
+        os.system(f"mv {arqv_ori} Originais") 
 
 
 ffmpeg()
