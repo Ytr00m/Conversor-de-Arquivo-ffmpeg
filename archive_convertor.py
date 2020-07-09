@@ -29,10 +29,6 @@ def converter(diretorio, format_ori, format_final):
     for i in arqvs:
         arqv_ori = i.replace("'", '\\\'').replace(" ", "\ ")
         arqv_final = arqv_ori.replace(format_ori, format_final)
-        print(arqv_final)
-        print(arqv_ori)
-        a = f"ffmpeg -i {arqv_ori} {arqv_final}"
-        print(a)
         os.system(f"ffmpeg -i {arqv_ori} {arqv_final}")
         os.system(f"mv {arqv_final} Convertidos")
         os.system(f"mv {arqv_ori} Originais") 
