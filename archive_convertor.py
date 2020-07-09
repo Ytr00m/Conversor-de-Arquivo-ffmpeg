@@ -24,11 +24,10 @@ def converter(diretorio, format_ori, format_final):
     os.mkdir("Convertidos")
     os.mkdir("Originais")
     for i in arqvs:
-        arqv_ori = i.replace(' ', '\ ')
         arqv_final = arqv_ori.replace(format_ori, format_final)
-        os.system(f"ffmpeg -i {arqv_ori} {arqv_final}")
-        os.system(f"mv {arqv_final} Convertidos")
-        os.system(f"mv {arqv_ori} Originais")
+        os.system(f"ffmpeg -i '{arqv_ori}' '{arqv_final}'")
+        os.system(f"mv '{arqv_final}' Convertidos")
+        os.system(f"mv '{arqv_ori}' Originais")
 
 
 ffmpeg()
